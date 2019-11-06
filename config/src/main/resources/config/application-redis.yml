@@ -1,0 +1,14 @@
+spring:
+  redis:
+    host: 192.168.252.222
+    port: 6379
+    lettuce:
+      pool:
+        #连接池最大连接数
+        max-active: 1000
+        #最大等待连接数
+        max-idle: 100
+        #最小等待连接数
+        min-idle: 50
+        #连接超时
+        max-wait: 1000ms

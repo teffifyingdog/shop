@@ -1,0 +1,16 @@
+spring:
+  mail:
+    #smtp地址
+    host: smtp.qq.com
+    username: 2860019549@qq.com
+    #从qq邮箱获得的授权码
+    password: dyzcvdiusuwidfhf
+    port: 587
+    default-encoding: utf-8
+    properties:
+      mail:
+        debug: true
+        #这个不写好像也能发邮箱
+#        smtp:
+#          socketFactory:
+#            class: javax.net.ssl.SSLSocketFactory

@@ -1,0 +1,8 @@
+server:
+  port: 60006
+spring:
+  application:
+    name: search
+  data:
+    solr:
+      host: http://192.168.252.222:8983/solr/solrconnection

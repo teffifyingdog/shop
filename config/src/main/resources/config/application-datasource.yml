@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    password: 336699369
+    username: root
+    url: jdbc:mysql://localhost:3306/shop?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis-plus:
+  configuration:
+    #表示mybatis打印sql语句的方式，将sql语句打印到控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #配置mapper.xml路径
+  mapper-locations: classpath:com/wjc/dao/mapper/*.xml

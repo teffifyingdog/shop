@@ -1,0 +1,13 @@
+fdfs:
+  #连接超时
+  connect-timeout: 600
+  pool:
+    #是否启用jmx消息
+    jmx-enabled: false
+  #缩略图
+  thumb-image:
+    height: 100
+    width: 100
+  #配置跟踪器
+  tracker-list:
+    - 47.240.57.133:22122

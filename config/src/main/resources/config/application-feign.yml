@@ -1,0 +1,13 @@
+feign:
+  hystrix:
+    enabled: false
+  client:
+    config:
+      default:
+        #连接超时时间
+        connectTimeout: 20000
+        #读取超时时间
+        readTimeout: 20000
+ribbon:
+  #如果连接超时，再次访问次数，默认为1
+  MaxAutoRetriesNextServer: 0

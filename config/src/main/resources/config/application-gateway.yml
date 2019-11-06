@@ -1,0 +1,52 @@
+server:
+  port: 60000
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        #后台
+        - uri: lb://back
+          predicates:
+            - Path=/back/**
+          filters:
+            #过滤掉一层路径，如果是2过滤掉第二层，可以配多个过滤器
+            - StripPrefix=1
+        #搜索服务
+        - uri: lb://search
+          predicates:
+            - Path=/search/**
+        #商品详情静态页面
+        - uri: lb://item
+          predicates:
+            - Path=/item/**,/html/**
+        #sso跳转登陆注册页面
+        - uri: lb://sso
+          predicates:
+            - Path=/sso/**
+        #car购物车服务
+        - uri: lb://car
+          predicates:
+            - Path=/car/**
+        #order订单服务
+        - uri: lb://order
+          predicates:
+            - Path=/order/**
+        #address服务也跳到order服务
+        - uri: lb://order
+          predicates:
+            - Path=/address/**
+        #pay服务也跳到order服务
+        - uri: lb://order
+          predicates:
+            - Path=/pay/**
+        #秒杀服务
+        - uri: lb://seckill
+          predicates:
+            - Path=/seckill/**
+        #前台
+        - uri: lb://front
+          predicates:
+            - Path=/**
+

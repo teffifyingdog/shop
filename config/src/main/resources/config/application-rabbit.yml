@@ -1,0 +1,11 @@
+spring:
+  rabbitmq:
+    host: 192.168.252.222
+    port: 5672
+    username: wjc
+    password: 369
+    virtual-host: /wjc
+    listener:
+      simple:
+        #rabbitMQ消息确认模式，manual手动，auto自动
+        acknowledge-mode: manual

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--  jedis连接池的配置文件  -->
+    <bean class="redis.clients.jedis.JedisPoolConfig" id="config">
+        <property name="maxTotal" value="200"/>
+        <property name="maxIdle" value="20"/>
+        <property name="minIdle" value="10"/>
+    </bean>
+
+    <!--jedis连接工厂-->
+    <bean class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" id="factory">
+        <property name="hostName" value="192.168.252.222"/>
+        <property name="port" value="6379"/>
+        <property name="poolConfig" ref="config"/>
+    </bean>
+
+    <!--从工厂中获得jedis对象-->
+    <bean class="org.springframework.data.redis.core.RedisTemplate" id="template">
+        <property name="connectionFactory" ref="factory"/>
+        <!--设置key的序列化方式-->
+        <property name="keySerializer" ref="stringRedisSerializer"/>
+        <!--设置value的序列化方式-->
+        <property name="valueSerializer" ref="stringRedisSerializer"/>
+    </bean>
+
+    <!--两种序列化-->
+    <!--只能字符串-->
+    <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" id="stringRedisSerializer"></bean>
+    <!--可以字符串和数字,但是在redis中是一长串的字符串，但拿到的还是字符串-->
+    <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" id="jdkSerializationRedisSerializer"></bean>
+
+</beans>

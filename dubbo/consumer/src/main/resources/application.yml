@@ -1,0 +1,15 @@
+dubbo:
+  application:
+    name: consumer
+  registry:
+    #服务名称
+    address: zookeeper://192.168.252.222:2181
+  consumer:
+    # 消费端超时时间,如果消费端和提供都设置，以消费端为主
+    timeout: 5000
+    # 出现错误，重试次数，默认2
+    retries: 0
+    #启动消费端时检不检测提供者状态
+    check: false
+    #负载平衡模式：random随机，roundrobin轮询，leastactive最少并发，默认随机
+    loadbalance: roundrobin

@@ -1,0 +1,5 @@
+server:
+  port: 60010
+spring:
+  application:
+    name: car

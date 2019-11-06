@@ -1,0 +1,5 @@
+server:
+  port: 60011
+spring:
+  application:
+    name: order

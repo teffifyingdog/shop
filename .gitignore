@@ -1,0 +1,7 @@
+# Project exclude paths
+/commons/target/
+/dubbo/service_api/target/
+/entity/target/
+/feign/target/
+/rabbit/target/
+/redis/target/

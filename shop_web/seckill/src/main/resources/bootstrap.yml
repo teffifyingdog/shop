@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      name: application
+      profile: seckill,eureka,thymeleaf,rabbit,datasource,feign
+      uri: http://localhost:60001

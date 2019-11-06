@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wjc.dao.GoodsApiMapper">
+
+    <!-- 关联查询商品信息时的映射关系 -->
+    <resultMap id="MyResultMap" type="com.wjc.entity.Goods">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="description" property="description"/>
+        <result column="price" property="price"/>
+        <result column="gnum" property="gnum"/>
+        <result column="create_time" property="createTime"/>
+        <result column="status" property="status"/>
+
+        <!-- 图片对多的处理 -->
+        <collection property="goodsImages" ofType="com.wjc.entity.GoodsImage">
+            <id column="giid" property="id"/>
+            <result column="gid" property="gid"/>
+            <result column="url" property="url"/>
+            <result column="info" property="info"/>
+            <result column="iscover" property="iscover"/>
+        </collection>
+
+    </resultMap>
+
+    <!-- 秒杀商品信息时的映射关系 -->
+    <resultMap id="Seckill_Good_Image" type="com.wjc.entity.Goods">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="description" property="description"/>
+        <result column="price" property="price"/>
+        <result column="gnum" property="gnum"/>
+        <result column="create_time" property="createTime"/>
+        <result column="status" property="status"/>
+
+        <!--秒杀商品信息-->
+        <association property="seckill" javaType="com.wjc.entity.Seckill">
+            <id column="sid" property="id"/>
+            <result column="gid" property="gid"/>
+            <result column="start_time" property="startTime"/>
+            <result column="end_time" property="endTime"/>
+            <result column="s_price" property="sPrice"/>
+            <result column="s_gnum" property="sGnum"/>
+        </association>
+
+        <!-- 图片对多的处理 -->
+        <collection property="goodsImages" ofType="com.wjc.entity.GoodsImage">
+            <id column="giid" property="id"/>
+            <result column="gid" property="gid"/>
+            <result column="url" property="url"/>
+            <result column="info" property="info"/>
+            <result column="iscover" property="iscover"/>
+        </collection>
+    </resultMap>
+
+
+    <select id="selectGoodsList" resultMap="MyResultMap">
+        select *, gi.id as 'giid' from goods g join goods_images gi on g.id = gi.gid
+    </select>
+
+    <select id="selectListByTime" resultMap="Seckill_Good_Image">
+        select *, gi.id as 'giid',s.id as 'sid' from goods g join goods_images gi on (g.id = gi.gid and gi.iscover=1)
+        join seckill s on (s.gid = g.id and year(s.start_time)=year(now()) and month(s.start_time)=month(now())
+        and day(s.start_time)=day(now()) and hour(s.start_time)>=hour(now())
+        ) order by s.start_time asc
+    </select>
+</mapper>

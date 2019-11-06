@@ -1,0 +1,19 @@
+dubbo:
+  application:
+    #服务名称
+    name: provider
+  protocol:
+    #提供者协议名称
+    name: dubbo
+    #协议端口名称，默认20880，如果填-1，会找从20880开始自动找一个可用端口
+    port: -1
+  registry:
+    #注册中心地址
+    address: zookeeper://192.168.252.222:2181
+  provider:
+    #提供者超时时间,如果消费端和提供都设置，以消费端为主
+    timeout: 1000
+    #发生错误，重发次数
+    retries: 1
+
+

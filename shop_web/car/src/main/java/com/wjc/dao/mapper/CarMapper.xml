@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wjc.dao.CarMapper">
+
+    <select id="getCarList" resultType="com.wjc.entity.ShopCar">
+        select * from shopcar where uid = #{uid} and gid in
+        <foreach collection="gid" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="getShopCarByCarId" resultType="com.wjc.entity.ShopCar">
+        select * from shopcar where  id in
+        <foreach collection="cid" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+</mapper>

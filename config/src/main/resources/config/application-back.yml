@@ -1,0 +1,9 @@
+server:
+  port: 60003
+spring:
+  application:
+    name: back
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 1000MB

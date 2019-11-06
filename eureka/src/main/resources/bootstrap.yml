@@ -1,0 +1,9 @@
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:60001
+      name: application
+      profile: eurekaserver,eureka
+#server:
+#  port: 60002

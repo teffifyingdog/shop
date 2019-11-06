@@ -1,0 +1,5 @@
+server:
+  port: 60009
+spring:
+  application:
+    name: item

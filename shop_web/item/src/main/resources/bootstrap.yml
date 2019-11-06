@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: application
+      profile: eureka,item,rabbit
+      uri: http://localhost:60001
+

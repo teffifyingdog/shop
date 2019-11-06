@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:switch="${mes}">
+    <h1>付款中....</h1>
+    <h1 th:case="退款">退款中，7*24小时内会给您回复</h1>
+</div>
+<a href="http://192.168.252.1:60000">返回首页</a>
+</body>
+</html>

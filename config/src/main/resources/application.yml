@@ -1,0 +1,10 @@
+server:
+  port: 60001
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:config
+  profiles:
+    active: native

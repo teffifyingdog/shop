@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      name: application
+      profile: search,eureka,thymeleaf,rabbit
+      uri: http://localhost:60001
